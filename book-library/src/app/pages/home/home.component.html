@@ -1,0 +1,19 @@
+@if (isLoading) {
+<div class="spinner-container">
+    <mat-spinner></mat-spinner>
+</div>
+}
+@if(!isLoading){
+<div class="book-grid">
+    @for (book of books; track book.key) {
+    <div class="book-item">
+        <img [src]="book.cover_id ? 'https://covers.openlibrary.org/b/id/' + book.cover_id + '-M.jpg' : defaultCover"
+            alt="Book Cover" class="book-cover" />
+        <p>Title: {{ book.title }}</p>
+        <p>Published: {{ book.first_publish_year }}</p>
+        <p>Authors: {{ getAuthorNames(book.authors) }}</p>
+    </div>
+    }
+</div>
+
+}
