@@ -1,17 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 .container {
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 120px 20px 20px;
-  }
-  a{
-    cursor: pointer;
-  }
-  .spinner-container {
-    display: flex;
-    justify-content: center; // Center the spinner horizontally
-    align-items: center; // Center the spinner vertically
-    height: calc(100vh - 70px); // Adjust height to center it below the header
-  }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 20px 20px;
+}
+
+a {
+  cursor: pointer;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: calc(100vh - 70px); 
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.text-end {
+  text-align: end;
+}

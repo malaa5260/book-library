@@ -1,0 +1,32 @@
+.search-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 auto;
+  }
+  
+  .search-results {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  
+.book-item {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 6px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; // Add transition for smooth effect
+
+  &:hover {
+    transform: translateY(-10px); // Move up by 10 pixels on hover
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); // Add shadow for depth effect
+  }
+}
+
+.book-cover {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 0.5rem;
+}

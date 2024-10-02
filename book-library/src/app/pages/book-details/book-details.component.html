@@ -1,0 +1,10 @@
+@if(bookDetails){
+    <div class="book-card">
+        <h1>{{ bookDetails.title }}</h1>
+        <img [src]="bookDetails.cover_id ? 'https://covers.openlibrary.org/b/id/' + bookDetails.cover_id + '-M.jpg' : defaultCover"
+                alt="Book Cover" class="book-cover" />
+        <p><strong>First Publish Year:</strong> {{ bookDetails.first_publish_year }}</p>
+        <p><strong>Author(s)</strong>: {{ getAuthorNames(bookDetails.authors) }}</p>
+        <p><strong>Editions Count:</strong> {{ bookDetails.edition_count}}</p>
+    </div>
+    }

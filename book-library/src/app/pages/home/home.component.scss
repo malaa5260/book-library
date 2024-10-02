@@ -10,7 +10,7 @@
   padding: 1rem;
   text-align: center;
   border-radius: 6px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; // Add transition for smooth effect
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
 
   &:hover {
     transform: translateY(-10px); // Move up by 10 pixels on hover
@@ -22,5 +22,24 @@
   max-width: 100%;
   height: auto;
   margin-bottom: 0.5rem;
+}
+.more-button {
+  display: inline-block; 
+  padding: 8px 16px; 
+  border-radius: 4px; 
+  font-size: 14px; 
+  transition: background-color 0.3s ease, transform 0.2s ease; 
+  
+  // Hover effect
+  &:hover {
+    background-color: #0056b3; 
+    transform: translateY(-2px); 
+    color: #fff;
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.5); 
+  }
 }
 

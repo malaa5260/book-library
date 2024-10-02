@@ -1,0 +1,28 @@
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+
+  p {
+    font-size: 16px;
+  }
+  .book-card {
+    background-color: white; 
+    border-radius: 8px; 
+    padding: 16px; 
+    margin: 20px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.3s; 
+}
+
+.book-card:hover {
+    transform: translateY(-2px); 
+}
+
+.book-cover {
+    max-width:250px; 
+    height: auto; 
+    margin-bottom: 2rem;
+    border-radius: 4px;
+}

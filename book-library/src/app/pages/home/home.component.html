@@ -7,11 +7,14 @@
 <div class="book-grid">
     @for (book of books; track book.key) {
     <div class="book-item">
-        <img [src]="book.cover_id ? 'https://covers.openlibrary.org/b/id/' + book.cover_id + '-M.jpg' : defaultCover"
-            alt="Book Cover" class="book-cover" />
-        <p>Title: {{ book.title }}</p>
+        <a (click)="viewDetails(book)">
+            <img [src]="book.cover_id ? 'https://covers.openlibrary.org/b/id/' + book.cover_id + '-M.jpg' : defaultCover"
+                alt="Book Cover" class="book-cover" />
+            <p>Title: {{ book.title }}</p>
+        </a>
         <p>Published: {{ book.first_publish_year }}</p>
         <p>Authors: {{ getAuthorNames(book.authors) }}</p>
+        <a (click)="viewDetails(book)" class="more-button">More</a>
     </div>
     }
 </div>
