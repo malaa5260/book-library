@@ -1,9 +1,17 @@
 <div class="search-container">
     <mat-form-field appearance="fill">
         <mat-label>Search for books</mat-label>
-        <input matInput placeholder="Search for books" name="searchTerm" [(ngModel)]="searchTerm"
-            (keyup)="onSearch()" />
+        <mat-select [(ngModel)]="searchKey">
+            <mat-option value="title">Title</mat-option>
+            <mat-option value="author">Author Name</mat-option>
+            <mat-option value="subject">Subject</mat-option>
+        </mat-select>
     </mat-form-field>
+    <mat-form-field appearance="fill">
+        <input matInput placeholder="Search for books" name="searchTerm" [(ngModel)]="searchTerm"
+            (keyup.enter)="onSearch()" />
+    </mat-form-field>
+
     <div class="text-end">
         <button mat-raised-button color="primary" (click)="clearSearch()">Clear</button>
     </div>
@@ -19,6 +27,15 @@
             <img [src]="book.cover_id ? 'https://covers.openlibrary.org/b/id/' + book.cover_id + '-M.jpg' : defaultCover"
                 alt="Book Cover" class="book-cover" />
             <p>{{ book.title }}</p>
+            <p>Published: {{ book.first_publish_year }}</p>
+            <p><strong>Author(s)</strong>:
+                @for (author of book.authors; track author;let last = $last) {
+                    {{ author}}
+                    @if(!last){
+                        <span>,</span>
+                    }
+                }
+            </p>
         </div>
         }
     </div>

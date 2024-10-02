@@ -14,12 +14,14 @@
         </a>
         <p>Published: {{ book.first_publish_year }}</p>
         <p><strong>Author(s)</strong>:
-            @for (author of book.authors; track author.key;) {
+            @for (author of book.authors; track author.key;let last = $last) {
             @if(author.key){
             <a [routerLink]="['/author', author.key]">
                 {{ author.name }}
             </a>
-            <br/>
+            @if(!last){
+            <span>,</span>
+            }
             }
             }
         </p>

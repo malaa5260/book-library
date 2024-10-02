@@ -33,9 +33,7 @@ export class BookService {
   getBooks(): Observable<any> {
     return this.http.get<any>(this.baseUrl + '/subjects/finance.json?limit=9');
   }
-  searchBooks(query: string): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/search.json?q=${query}`);
-  }
+
   getBookDetails(key: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/books/${key}.json`);
   }
@@ -45,7 +43,10 @@ export class BookService {
     return this.http.get<any>(`${this.baseUrl}${authorKey}.json`);
 
   }
-
+  searchBooks(query: string, key: string): Observable<any> {
+    const encodedQuery = encodeURIComponent(query);
+    return this.http.get<any>(`${this.baseUrl}/search.json?${key}=${encodedQuery}`);
+  }
 
 
 }

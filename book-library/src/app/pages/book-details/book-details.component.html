@@ -5,12 +5,14 @@
         alt="Book Cover" class="book-cover" />
     <p><strong>First Publish Year:</strong> {{ bookDetails.first_publish_year }}</p>
     <p><strong>Author(s)</strong>:
-        @for (author of bookDetails.authors; track author.key;) {
+        @for (author of bookDetails.authors; track author.key;let last = $last) {
         @if(author.key){
         <a [routerLink]="['/author', author.key]">
             {{ author.name }}
         </a>
-        <br/>
+        @if(!last){
+        <span>,</span>
+        }
         }
         }
     </p>
