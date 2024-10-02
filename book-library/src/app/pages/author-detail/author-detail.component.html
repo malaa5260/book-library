@@ -1,0 +1,24 @@
+<div class="author-detail card">
+    @if(authorDetails?.photos && authorDetails.photos.length > 0){
+    <img [src]="'https://covers.openlibrary.org/b/id/' + authorDetails.photos[0] + '-M.jpg'" alt="Author Photo"
+        class="author-photo" />
+    }
+    @else{
+    <img [src]="defaultCover" alt="Default Cover" class="author-photo" />
+    }
+
+    <h2>{{ authorDetails?.name }}</h2>
+    <p><strong>Birth Date:</strong> {{ authorDetails?.birth_date }}</p>
+    <p><strong>Work Count:</strong> {{ authorDetails?.work_count }}</p>
+    <h3>Top 5 Subjects:</h3>
+    @if(authorDetails?.Subjects){
+    <ul>
+        @for (subject of authorDetails?.Subjects; track subject.key) {
+        <li>
+            {{ subject }}
+        </li>
+        }
+    </ul>
+    }
+
+</div>

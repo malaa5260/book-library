@@ -9,8 +9,26 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class BookService {
   private baseUrl = 'https://openlibrary.org'; // OpenLibrary API
-  
-  constructor(@Inject(PLATFORM_ID) private platformId: Object,private http: HttpClient) {}
+  private selectedBookSubject = new BehaviorSubject<Book | null>(this.loadBookFromLocalStorage());
+  selectedBook$ = this.selectedBookSubject.asObservable();
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private http: HttpClient) { }
+
+  selectBook(book: Book) {
+    this.selectedBookSubject.next(book);
+    this.saveBookToLocalStorage(book);
+  }
+
+  loadBookFromLocalStorage() {
+    if (isPlatformBrowser(this.platformId)) {
+      const book = localStorage.getItem('selectedBook');
+      return book ? JSON.parse(book) : null;
+    }
+    return null;
+  }
+  saveBookToLocalStorage(book: Book) {
+    localStorage.setItem('selectedBook', JSON.stringify(book));
+  }
 
   getBooks(): Observable<any> {
     return this.http.get<any>(this.baseUrl + '/subjects/finance.json?limit=9');
@@ -22,33 +40,12 @@ export class BookService {
     return this.http.get<any>(`${this.baseUrl}/books/${key}.json`);
   }
 
-  getEditionDetails(key: string): Observable<any> {
-    const url = `${this.baseUrl}${key}/editions.json`;
-    return this.http.get(url);
-  }
+ 
   getAuthorDetails(authorKey: string): Observable<any> {
-    const url = `${this.baseUrl}${authorKey}.json`;
-    return this.http.get(url);
+    return this.http.get<any>(`${this.baseUrl}${authorKey}.json`);
+
   }
 
 
-  private selectedBookSubject = new BehaviorSubject<Book | null>(this.loadBookFromLocalStorage());
-  selectedBook$ = this.selectedBookSubject.asObservable();
 
-  selectBook(book: Book) {
-    this.selectedBookSubject.next(book);
-    this.saveBookToLocalStorage(book);
-  }
-
-  loadBookFromLocalStorage() {
-    if (isPlatformBrowser(this.platformId)) {
-        const book = localStorage.getItem('selectedBook');
-        return book ? JSON.parse(book) : null;
-    }
-    return null; 
-}
-
-  saveBookToLocalStorage(book: Book) {
-    localStorage.setItem('selectedBook', JSON.stringify(book));
-  }
 }

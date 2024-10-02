@@ -31,10 +31,6 @@ export class HomeComponent implements OnInit {
       this.isLoading = false;
     });
   }
-  // get authors as a string
-  getAuthorNames(authors: { name: string }[]): string {
-    return authors.map(author => author.name).join(', ');
-  }
 
 
   viewDetails(book: any) {

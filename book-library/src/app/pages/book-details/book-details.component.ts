@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../../models/book.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { BookService } from '../../services/book.service';
 
 @Component({
   selector: 'app-book-details',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './book-details.component.html',
   styleUrl: './book-details.component.scss'
 })
@@ -22,8 +22,5 @@ export class BookDetailsComponent implements OnInit {
       this.bookDetails = book; 
     });
   }
-  // get authors as a string
-  getAuthorNames(authors: { name: string }[]): string {
-    return authors.map(author => author.name).join(', ');
-  }
+
 }

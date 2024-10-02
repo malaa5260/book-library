@@ -13,7 +13,16 @@
             <p>Title: {{ book.title }}</p>
         </a>
         <p>Published: {{ book.first_publish_year }}</p>
-        <p>Authors: {{ getAuthorNames(book.authors) }}</p>
+        <p><strong>Author(s)</strong>:
+            @for (author of book.authors; track author.key;) {
+            @if(author.key){
+            <a [routerLink]="['/author', author.key]">
+                {{ author.name }}
+            </a>
+            <br/>
+            }
+            }
+        </p>
         <a (click)="viewDetails(book)" class="more-button">More</a>
     </div>
     }
